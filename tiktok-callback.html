@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TikTok連携 認可コード</title>
+<style>
+  body { font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", Arial, sans-serif; max-width: 640px; margin: 40px auto; padding: 0 16px; line-height: 1.7; color: #222; }
+  code { background: #f4f4f4; padding: 8px 12px; border-radius: 6px; display: block; word-break: break-all; margin: 12px 0; }
+  button { padding: 8px 14px; border-radius: 6px; border: 1px solid #ccc; cursor: pointer; }
+</style>
+</head>
+<body>
+  <h1>🐦 TikTok認可コード</h1>
+  <p>以下のコードをコピーして、ターミナルに貼り付けてくださいッポ。</p>
+  <code id="code">(取得中...)</code>
+  <button onclick="copyCode()">コピー</button>
+  <p id="status"></p>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const code = params.get("code") || "(codeが見つかりませんでした。URLを確認してください)";
+    document.getElementById("code").textContent = code;
+
+    function copyCode() {
+      navigator.clipboard.writeText(code).then(() => {
+        document.getElementById("status").textContent = "コピーしましたッポ！";
+      });
+    }
+  </script>
+</body>
+</html>
